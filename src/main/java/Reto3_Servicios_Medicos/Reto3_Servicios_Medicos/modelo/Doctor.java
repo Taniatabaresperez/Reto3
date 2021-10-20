@@ -38,6 +38,10 @@ public class Doctor implements Serializable{
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "doctor")
     @JsonIgnoreProperties({"doctor","client"})
     private List<Message> messages;
+    
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "doctor")
+    @JsonIgnoreProperties({"doctor","messages"})
+    private List<Reservation> reservations;
 
 
     public Integer getId() {
