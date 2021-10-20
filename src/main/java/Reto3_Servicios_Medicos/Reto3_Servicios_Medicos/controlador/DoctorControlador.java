@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,10 +26,9 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("/Doctor") //ESTO ES LO QUE VA A PROBAR EL MASTERTECH SI SALE UN ERROR 404 HAY QUE MIRAR ESTA PARTE
+@RequestMapping("/Doctor")
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class DoctorControlador {
-    
     @Autowired
     private ServiciosDoctor servicios;
     @GetMapping("/all")
@@ -51,13 +49,13 @@ public class DoctorControlador {
     
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Doctor update(@RequestBody Doctor doc) {
-        return servicios.update(doc);
+    public Doctor update(@RequestBody Doctor doctor) {
+        return servicios.update(doctor);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int doctorId) {
         return servicios.deleteDoctor(doctorId);
-    } 
+    }
 }
