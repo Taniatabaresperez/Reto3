@@ -51,8 +51,8 @@ public class DoctorControlador {
     
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Doctor update(@RequestBody Doctor doctor) {
-        return servicios.update(doctor);
+    public Doctor update(@RequestBody Doctor doc) {
+        return servicios.update(doc);
     }
 
     @DeleteMapping("/{id}")
