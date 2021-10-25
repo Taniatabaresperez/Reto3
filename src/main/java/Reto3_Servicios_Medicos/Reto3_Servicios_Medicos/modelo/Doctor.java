@@ -40,7 +40,7 @@ public class Doctor implements Serializable{
     private List<Message> messages;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "doctor")
-    @JsonIgnoreProperties({"doctor","messages"})
+    @JsonIgnoreProperties({"doctor","message"})
     private List<Reservation> reservations;
 
 
