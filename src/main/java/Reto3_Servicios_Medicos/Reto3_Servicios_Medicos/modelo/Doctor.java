@@ -32,7 +32,7 @@ public class Doctor implements Serializable{
     
     @ManyToOne
     @JoinColumn(name ="specialtyId")
-    @JsonIgnoreProperties({"specialty", "doctors"})
+    @JsonIgnoreProperties("doctors")
     private Specialty specialty;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "doctor")
@@ -40,9 +40,8 @@ public class Doctor implements Serializable{
     private List<Message> messages;
     
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "doctor")
-    @JsonIgnoreProperties({"doctor","message"})
-    private List<Reservation> reservations;
-
+    @JsonIgnoreProperties({"doctor","messages"})
+    public List<Reservation> reservations;
 
     public Integer getId() {
         return id;
@@ -99,6 +98,14 @@ public class Doctor implements Serializable{
     public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
-    
-    
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
+    }
+
+
 }

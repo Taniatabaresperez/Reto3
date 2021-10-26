@@ -3,6 +3,7 @@ package Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.modelo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,8 +39,8 @@ public class Reservation implements Serializable{
     @JsonIgnoreProperties({"reservations","messages"})
     private Client client;
     
-    @OneToOne
-    @JoinColumn(name = "scoreId")
+    @OneToOne (cascade={CascadeType.REMOVE},mappedBy = "reservation")
+    @JsonIgnoreProperties("reservation")
     private Score score;
 
     public Integer getIdReservation() {
@@ -98,5 +99,5 @@ public class Reservation implements Serializable{
         this.score = score;
     }
 
-   
+
 }

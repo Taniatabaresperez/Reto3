@@ -25,7 +25,7 @@ public class Score {
     private Integer id;
     private Integer calification;
     
-    @OneToOne (cascade={CascadeType.REMOVE},mappedBy = "score")
+    @OneToOne
     @JsonIgnoreProperties("score")
     private Reservation reservation;
 
