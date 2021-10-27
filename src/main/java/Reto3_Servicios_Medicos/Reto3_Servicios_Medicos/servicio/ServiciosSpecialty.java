@@ -49,6 +49,8 @@ public class ServiciosSpecialty {
                     g.get().setName(specialty.getName());
                 }
                 return metodosCrud.save(g.get());
+            }else{
+                return specialty;
             }
         }
         return specialty;
