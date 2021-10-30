@@ -2,6 +2,7 @@ package Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -34,6 +35,7 @@ public class Message implements Serializable{
     /**
      * Atributo String messageText
      */
+    @Column(length =250)
     private String messageText;
     
     /**
