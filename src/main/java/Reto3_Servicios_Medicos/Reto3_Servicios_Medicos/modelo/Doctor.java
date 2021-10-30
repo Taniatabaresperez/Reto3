@@ -20,29 +20,62 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "doctor")
-public class Doctor implements Serializable{
+/**
+ * Creacion de la clase Doctor para asociar los datos ingresados en la base de
+ * datos
+ *
+ * @param Integer id, year
+ * @param String name, department, description
+ */
+public class Doctor implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
+    /**
+     * Atributo Integer id
+     */
     private Integer id;
+    /**
+     * Atributo String name
+     */
     private String name;
+    /**
+     * Atributo String department
+     */
     private String department;
+    /**
+     * Atributo Integer year
+     */
     private Integer year;
+    /**
+     * Atributo string description
+     */
     private String description;
-    
+
+    /**
+     * Creacion de una relacion Many To One con la tabla specialty
+     */
     @ManyToOne
-    @JoinColumn(name ="specialtyId")
+    @JoinColumn(name = "specialtyId")
     @JsonIgnoreProperties("doctors")
     private Specialty specialty;
-    
+    /**
+     * Creacion de una relacion One to Many con la tabla message
+     */
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "doctor")
-    @JsonIgnoreProperties({"doctor","client"})
+    @JsonIgnoreProperties({"doctor", "client"})
     private List<Message> messages;
-    
+    /**
+     * Creacion de una relacion One to Many con la tabla reservation
+     */
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "doctor")
-    @JsonIgnoreProperties({"doctor","messages"})
+    @JsonIgnoreProperties({"doctor", "messages"})
     public List<Reservation> reservations;
 
+    /**
+     * Creacion de los Getters y Setters de cada uno de los atributos y
+     * relaciones
+     */
     public Integer getId() {
         return id;
     }
@@ -106,6 +139,4 @@ public class Doctor implements Serializable{
     public void setReservations(List<Reservation> reservations) {
         this.reservations = reservations;
     }
-
-
 }

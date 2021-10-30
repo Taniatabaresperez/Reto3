@@ -18,18 +18,41 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "specialty")
+/**
+ * Creacion de la clase Specialty para asociar los datos ingresados en la base de
+ * datos
+ *
+ * @param Integer id
+ * @param String name, description
+ */
 public class Specialty implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     
+    /**
+     * Atributo Integer id
+     */
     private Integer id;
+    /**
+     * Atributo String name
+     */
     private String name;
+    /**
+     * Atributo string description
+     */
     private String description;
     
+    /**
+     * Creacion de una relacion One to Many con la tabla doctor
+     */
     @OneToMany (cascade={CascadeType.PERSIST},mappedBy = "specialty")
     @JsonIgnoreProperties("specialty")
     private List<Doctor> doctors;
     
+    /**
+     * Creacion de los Getters y Setters de cada uno de los atributos y de la
+     * relacion
+     */
     public Integer getId() {
         return id;
     }

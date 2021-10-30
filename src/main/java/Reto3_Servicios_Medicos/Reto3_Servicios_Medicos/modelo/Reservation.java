@@ -20,29 +20,60 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "reservation")
+/**
+ * Creacion de la clase Message para asociar los datos ingresados en la base de
+ * datos
+ *
+ * @param Integer idReservation
+ * @param String status
+ * @param Date startDate, devolutionDate
+ */
 public class Reservation implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     
+    /**
+     * Atributo Integer idReservation
+     */
     private Integer idReservation;
+    /**
+     * Atributo Date startDate
+     */
     private Date startDate;
+    /**
+     * Atributo Date devolutionDate
+     */
     private Date devolutionDate;
+    /**
+     * Atributo String status
+     */
     private String status="created";
     
+    /**
+     * Creacion de una relacion Many To One con la tabla doctor
+     */
     @ManyToOne
     @JoinColumn(name ="doctorId")
     @JsonIgnoreProperties("reservations")
     private Doctor doctor;
-    
+    /**
+     * Creacion de una relacion Many To One con la tabla client
+     */
     @ManyToOne
     @JoinColumn(name ="clientId")
     @JsonIgnoreProperties({"reservations","messages"})
     private Client client;
-    
+    /**
+     * Creacion de una relacion One To One con la tabla score
+     */
     @OneToOne (cascade={CascadeType.REMOVE},mappedBy = "reservation")
     @JsonIgnoreProperties("reservation")
     private Score score;
-
+    
+    /**
+     * Creacion de los Getters y Setters de cada uno de los atributos y
+     * relaciones
+     */
     public Integer getIdReservation() {
         return idReservation;
     }
@@ -98,6 +129,5 @@ public class Reservation implements Serializable{
     public void setScore(Score score) {
         this.score = score;
     }
-
 
 }

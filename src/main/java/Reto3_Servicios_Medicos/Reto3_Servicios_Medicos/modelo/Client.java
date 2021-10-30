@@ -18,25 +18,54 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "client")
-public class Client implements Serializable{
+/**
+ * Creacion de la clase Client para asociar los datos ingresados en la base de
+ * datos
+ *
+ * @param Integer idClient, age
+ * @param String email, password, name
+ */
+public class Client implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
+    /**
+     * Atributo Integer idClient
+     */
     private Integer idClient;
+    /**
+     * Atributo String email
+     */
     private String email;
+    /**
+     * Atributo String password
+     */
     private String password;
+    /**
+     * Atributo String name
+     */
     private String name;
+    /**
+     * Atributo Integer age
+     */
     private Integer age;
-    
-    @OneToMany (cascade={CascadeType.PERSIST},mappedBy = "client")
+    /**
+     * Creacion de una relacion One to Many con la tabla message
+     */
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
     @JsonIgnoreProperties("client")
     public List<Message> messages;
-    
-    @OneToMany (cascade={CascadeType.PERSIST},mappedBy = "client")
+    /**
+     * Creacion de una relacion One to Many con la tabla reservation
+     */
+    @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "client")
     @JsonIgnoreProperties("client")
     public List<Reservation> reservations;
-    
 
+    /**
+     * Creacion de los Getters y Setters de cada uno de los atributos y
+     * relaciones
+     */
     public Integer getIdClient() {
         return idClient;
     }
