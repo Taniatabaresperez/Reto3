@@ -46,9 +46,9 @@ public class ServiciosDoctor {
                     e.get().setName(doctor.getName());
                 }
                 if(doctor.getDepartment()!=null){
-                    e.get().setDepartment(doctor.getDepartment());
+                    e.get().setDepartment(doctor.getDepartment()) ;
                 }
-                if(doctor.getYear()!=null){
+                if(doctor.getYear() !=null){
                     e.get().setYear(doctor.getYear());
                 }
                 if(doctor.getDescription()!=null){

@@ -30,7 +30,7 @@ public class ReservationControlador {
     @Autowired
     private ServiciosReservation servicios;
     @GetMapping("/all")
-    public List<Reservation> getReservation(){
+    public List<Reservation> getAll(){
         return servicios.getAll();
     }
     

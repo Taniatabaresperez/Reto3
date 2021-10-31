@@ -30,7 +30,7 @@ public class MessageControlador {
      @Autowired
     private ServiciosMessage servicios;
     @GetMapping("/all")
-    public List<Message> getMessage(){
+    public List<Message> getAll(){
         return servicios.getAll();
     }
     

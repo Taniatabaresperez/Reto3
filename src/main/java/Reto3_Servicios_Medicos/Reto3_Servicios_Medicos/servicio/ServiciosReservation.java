@@ -38,26 +38,26 @@ public class ServiciosReservation {
         }
     }
     
-    public Reservation update(Reservation reservation){
-        if(reservation.getIdReservation()!=null){
-            Optional<Reservation> e= metodosCrud.getReservation(reservation.getIdReservation());
-            if(!e.isEmpty()){
+    public Reservation update(Reservation reservation) {
+        if (reservation.getIdReservation() != null) {
+            Optional<Reservation> evt = metodosCrud.getReservation(reservation.getIdReservation());
+            if (!evt.isEmpty()) {
+                if (reservation.getStartDate() != null) {
+                    evt.get().setStartDate(reservation.getStartDate());
+                }
+                if (reservation.getDevolutionDate() != null) {
+                    evt.get().setDevolutionDate(reservation.getDevolutionDate());
+                }
+                if (reservation.getStatus() != null) {
+                    evt.get().setStatus(reservation.getStatus());
+                }
+                metodosCrud.save(evt.get());
+                return evt.get();
 
-                if(reservation.getStartDate()!=null){
-                    e.get().setStartDate(reservation.getStartDate());
-                }
-                if(reservation.getDevolutionDate()!=null){
-                    e.get().setDevolutionDate(reservation.getDevolutionDate());
-                }
-                if(reservation.getStatus()!=null){
-                    e.get().setStatus(reservation.getStatus());
-                }
-                metodosCrud.save(e.get());
-                return e.get();
-            }else{
+            } else {
                 return reservation;
             }
-        }else{
+        } else {
             return reservation;
         }
     }

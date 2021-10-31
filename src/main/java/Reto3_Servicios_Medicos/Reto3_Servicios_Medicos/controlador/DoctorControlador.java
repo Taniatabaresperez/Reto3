@@ -32,7 +32,7 @@ public class DoctorControlador {
     @Autowired
     private ServiciosDoctor servicios;
     @GetMapping("/all")
-    public List<Doctor> getDoctor(){
+    public List<Doctor> getAll(){
         return servicios.getAll();
     }
     

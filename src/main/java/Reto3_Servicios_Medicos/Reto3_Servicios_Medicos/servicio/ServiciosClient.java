@@ -39,31 +39,32 @@ public class ServiciosClient {
     }
     
     public Client update(Client client){
-        if(client.getIdClient()!=null){
-            Optional<Client> e= metodosCrud.getClient(client.getIdClient());
-            if(!e.isEmpty()){
-                if(client.getName()!=null){
-                    e.get().setName(client.getName());
+        if (client.getIdClient() != null) {
+            Optional<Client> evt = metodosCrud.getClient(client.getIdClient());
+            if (!evt.isEmpty()) {
+                if (client.getEmail() != null) {
+                    evt.get().setEmail(client.getEmail());
                 }
-                if(client.getAge()!=null){
-                    e.get().setAge(client.getAge());
+                if (client.getPassword() != null) {
+                    evt.get().setPassword(client.getPassword());
                 }
-                if(client.getPassword()!=null){
-                    e.get().setPassword(client.getPassword());
+                if (client.getName() != null) {
+                    evt.get().setName(client.getName());
                 }
-                if(client.getEmail()!=null){
-                    e.get().setEmail(client.getEmail());
+                if (client.getAge() != null) {
+                    evt.get().setAge(client.getAge());
                 }
-                metodosCrud.save(e.get());
-                return e.get();
-            }else{
+                metodosCrud.save(evt.get());
+                return evt.get();
+
+            } else {
                 return client;
             }
-        }else{
+        } else {
             return client;
         }
     }
-
+    
     public boolean deleteClient(int clientId) {
         Boolean aBoolean = getClient(clientId).map(client -> {
             metodosCrud.delete(client);

@@ -31,7 +31,7 @@ public class SpecialtyControlador {
     @Autowired
     private ServiciosSpecialty servicios;
     @GetMapping("/all")
-    public List<Specialty> getSpecialty(){
+    public List<Specialty> getAll(){
         return servicios.getAll();
     }
     

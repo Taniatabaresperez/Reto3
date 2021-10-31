@@ -39,21 +39,24 @@ public class ServiciosSpecialty {
     }
     
     public Specialty update(Specialty specialty){
-        if(specialty.getId()!=null){
-            Optional<Specialty>g=metodosCrud.getSpecialty(specialty.getId());
-            if(!g.isEmpty()){
-                if(specialty.getDescription()!=null){
+        if (specialty.getId() != null) {
+            Optional<Specialty> g = metodosCrud.getSpecialty(specialty.getId());
+            if (!g.isEmpty()) {
+                if (specialty.getDescription() != null) {
                     g.get().setDescription(specialty.getDescription());
                 }
-                if(specialty.getName()!=null){
+                if (specialty.getName() != null) {
                     g.get().setName(specialty.getName());
                 }
-                return metodosCrud.save(g.get());
-            }else{
+                metodosCrud.save(g.get());
+                return g.get();
+
+            } else {
                 return specialty;
             }
-        }
-        return specialty;
+        } else{
+                return specialty;
+            }
     }
     
     public boolean deleteSpecialty(int specialtyId){

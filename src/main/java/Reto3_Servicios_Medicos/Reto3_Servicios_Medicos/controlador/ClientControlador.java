@@ -30,7 +30,7 @@ public class ClientControlador {
     @Autowired
     private ServiciosClient servicios;
     @GetMapping("/all")
-    public List<Client> getClient(){
+    public List<Client> getAll(){
         return servicios.getAll();
     }
     

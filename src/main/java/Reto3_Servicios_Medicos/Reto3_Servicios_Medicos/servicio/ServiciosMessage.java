@@ -38,19 +38,20 @@ public class ServiciosMessage {
         }
     }
     
-    public Message update(Message message){
-        if(message.getIdMessage()!=null){
-            Optional<Message> e= metodosCrud.getMessage(message.getIdMessage());
-            if(!e.isEmpty()){
-                if(message.getMessageText()!=null){
-                    e.get().setMessageText(message.getMessageText());
+    public Message update(Message message) {
+        if (message.getIdMessage()!= null) {
+            Optional<Message> evt = metodosCrud.getMessage(message.getIdMessage());
+            if (!evt.isEmpty()) {
+                if (message.getMessageText()!= null) {
+                    evt.get().setMessageText(message.getMessageText());
                 }
-                metodosCrud.save(e.get());
-                return e.get();
-            }else{
+                metodosCrud.save(evt.get());
+                return evt.get();
+
+            } else {
                 return message;
             }
-        }else{
+        } else {
             return message;
         }
     }
