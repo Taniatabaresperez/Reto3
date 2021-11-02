@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
  *
  * @author tania
  */
-@Service
+
 /**
  * Creacion de la clase Servicios Reservation para plantear los metodos crud
  * repository
@@ -28,6 +28,7 @@ import org.springframework.stereotype.Service;
  * @param update Reservation
  * @param Boolean Delete Reservation
  */
+@Service
 public class ServiciosReservation {
 
     
@@ -35,21 +36,21 @@ public class ServiciosReservation {
     private RepositorioReservation metodosCrud;
 
     /**
-     * Atributo List Reservation
+     * Clase que permite obtener todos los elementos
      */
     public List<Reservation> getAll() {
         return metodosCrud.getAll();
     }
 
     /**
-     * Atributo Optional Reservation
+     * Clase que permite obtener un elemento en especifico
      */
     public Optional<Reservation> getReservation(int id) {
         return metodosCrud.getReservation(id);
     }
 
     /**
-     * Atributo save Reservation 
+     * Clase que permite guardar un nuevo elemento
      */
     public Reservation save(Reservation reservation) {
         if (reservation.getIdReservation() == null) {
@@ -65,7 +66,7 @@ public class ServiciosReservation {
     }
 
     /**
-     * Atributo update Reservation 
+     * Clase que permite modificar un elemento existente
      */
     public Reservation update(Reservation reservation) {
         if (reservation.getIdReservation() != null) {
@@ -92,7 +93,7 @@ public class ServiciosReservation {
     }
 
     /**
-     * Atributo Boolean Delete Reservation
+     * Clase que permite borrar un elemento en especifico
      */
     public boolean deleteReservation(int reservationId) {
         return getReservation(reservationId).map(reservation -> {
@@ -100,13 +101,17 @@ public class ServiciosReservation {
             return true;
         }).orElse(false);
     }
-
+    /**
+     * Clase que trae el reporte de status
+     */
     public ReservationStatus getReservationStatusReport(){
         List<Reservation> completed = metodosCrud.getReservationByStatus("completed");
         List<Reservation> cancelled = metodosCrud.getReservationByStatus("cancelled");
         return new ReservationStatus(completed.size(), cancelled.size());
     }
-
+    /**
+     * Clase que tre el reporte de las fechas
+     */
     public List<Reservation> getReservationPeriod(String dateOne, String dateTwo){
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         try {
@@ -120,7 +125,9 @@ public class ServiciosReservation {
         }
         return new ArrayList<>();
     }
-
+    /**
+     * Clase trae el reporte de los clientes
+     */
     public List<CountClient> getTopClients(){
         return metodosCrud.getTopClient();
     }

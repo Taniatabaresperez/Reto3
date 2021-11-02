@@ -45,6 +45,9 @@ public class ServiciosMessage {
                 if (message.getMessageText()!= null) {
                     evt.get().setMessageText(message.getMessageText());
                 }
+                if (message.getClient()!= null) {
+                    evt.get().setClient(message.getClient());
+                }
                 metodosCrud.save(evt.get());
                 return evt.get();
 
