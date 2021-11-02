@@ -1,4 +1,4 @@
-package Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.servicio;
+ package Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.servicio;
 
 import Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.repositorio.RepositorioDoctor;
 import Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.modelo.Doctor;
@@ -69,10 +69,9 @@ public class ServiciosDoctor {
 
 
     public boolean deleteDoctor(int doctorId) {
-        Boolean aBoolean = getDoctor(doctorId).map(doctor -> {
+        return getDoctor(doctorId).map(doctor -> {
             metodosCrud.delete(doctor);
             return true;
         }).orElse(false);
-        return aBoolean;
     }
 }

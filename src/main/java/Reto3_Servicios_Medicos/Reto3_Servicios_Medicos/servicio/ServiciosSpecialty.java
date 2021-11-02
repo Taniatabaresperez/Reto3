@@ -60,10 +60,9 @@ public class ServiciosSpecialty {
     }
     
     public boolean deleteSpecialty(int specialtyId){
-        Boolean d=getSpecialty(specialtyId).map(specialty -> {
+        return getSpecialty(specialtyId).map(specialty -> {
             metodosCrud.delete(specialty);
             return true;
         }).orElse(false);
-        return d;
     }
 }

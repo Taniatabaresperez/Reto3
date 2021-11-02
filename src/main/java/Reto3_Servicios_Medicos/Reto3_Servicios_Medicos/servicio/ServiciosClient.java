@@ -66,10 +66,9 @@ public class ServiciosClient {
     }
     
     public boolean deleteClient(int clientId) {
-        Boolean aBoolean = getClient(clientId).map(client -> {
+        return getClient(clientId).map(client -> {
             metodosCrud.delete(client);
             return true;
         }).orElse(false);
-        return aBoolean;
     }
 }

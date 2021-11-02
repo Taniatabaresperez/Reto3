@@ -1,6 +1,8 @@
 package Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.controlador;
 
 import Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.modelo.Reservation;
+import Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.reportes.CountClient;
+import Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.reportes.ReservationStatus;
 import Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.servicio.ServiciosReservation;
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +40,7 @@ public class ReservationControlador {
     public Optional<Reservation> getReservation(@PathVariable("id") int idReservation){
         return servicios.getReservation(idReservation);
     }
-    
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED) //ESTE REQUESTBODY PUEDE GENERAR PTOBLEMAS EN EL FRONT
     public Reservation save(@RequestBody Reservation reservation){
@@ -50,9 +52,25 @@ public class ReservationControlador {
     public Reservation update(@RequestBody Reservation reservation) {
         return servicios.update(reservation);
     }
+
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public boolean delete(@PathVariable("id") int reservationId) {
         return servicios.deleteReservation(reservationId);
+    }
+
+    @GetMapping("/report-status")
+    public ReservationStatus getReservationsStatusReport(){
+        return servicios.getReservationStatusReport();
+    }
+
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservation> getReservationReportDate(@PathVariable("dateOne") String dateOne, @PathVariable("dateTwo") String dateTwo){
+        return servicios.getReservationPeriod(dateOne, dateTwo);
+    }
+
+    @GetMapping("/report-clients")
+    public List<CountClient> getClients(){
+        return servicios.getTopClients();
     }
 }

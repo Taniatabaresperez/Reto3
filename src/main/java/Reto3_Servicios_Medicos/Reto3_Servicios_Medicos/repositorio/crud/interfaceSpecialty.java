@@ -1,4 +1,4 @@
-package Reto3_Servicios_Medicos.Reto3_Servicios_Medicos;
+package Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.repositorio.crud;
 
 import Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.modelo.Specialty;
 import org.springframework.data.repository.CrudRepository;

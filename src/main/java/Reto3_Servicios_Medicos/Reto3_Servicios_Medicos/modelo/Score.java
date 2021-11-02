@@ -22,8 +22,8 @@ import javax.persistence.Table;
  * Creacion de la clase Score para asociar los datos ingresados en la base de
  * datos
  *
- * @param Integer id
- * @param Integer calification
+ * @param Integer id, calification
+ * @param String messageText
  */
 public class Score {
     @Id
@@ -33,6 +33,10 @@ public class Score {
      * Atributo Integer id
      */
     private Integer id;
+    /**
+     * Atributo String messageText
+     */
+    private String messageText;
     /**
      * Atributo Integer calification
      */
@@ -65,5 +69,20 @@ public class Score {
         this.calification = calification;
     }
 
-   
+    public String getMessageText() {
+        return messageText;
+    }
+
+    public void setMessageText(String messageText) {
+        this.messageText = messageText;
+    }
+
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
+
 }

@@ -24,7 +24,7 @@ import javax.persistence.Table;
  * Creacion de la clase Message para asociar los datos ingresados en la base de
  * datos
  *
- * @param Integer idReservation
+ * @param Integer idReservation, score
  * @param String status
  * @param Date startDate, devolutionDate
  */
@@ -32,8 +32,8 @@ public class Reservation implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     
-    /**
-     * Atributo Integer idReservation
+    /*
+      Atributo Integer idReservation
      */
     private Integer idReservation;
     /**
@@ -47,7 +47,7 @@ public class Reservation implements Serializable{
     /**
      * Atributo String status
      */
-    private String status="created";
+    private String status;
     
     /**
      * Creacion de una relacion Many To One con la tabla doctor
@@ -69,7 +69,7 @@ public class Reservation implements Serializable{
     @OneToOne (cascade={CascadeType.REMOVE},mappedBy = "reservation")
     @JsonIgnoreProperties("reservation")
     private Score score;
-    
+//    
     /**
      * Creacion de los Getters y Setters de cada uno de los atributos y
      * relaciones

@@ -1,6 +1,6 @@
 package Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.repositorio;
 
-import Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.interfaceClient;
+import Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.repositorio.crud.interfaceClient;
 import Reto3_Servicios_Medicos.Reto3_Servicios_Medicos.modelo.Client;
 import java.util.List;
 import java.util.Optional;
