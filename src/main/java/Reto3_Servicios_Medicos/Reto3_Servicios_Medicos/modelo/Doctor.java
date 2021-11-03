@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author tania
+ * @author tania tabares perez
  */
 
 @Entity
